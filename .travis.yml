@@ -1,0 +1,16 @@
+sudo: false
+install: true
+
+addons:
+  sonarcloud:
+    organization: "kwst1s"
+    token:
+      secure: "8245bee0477783dd8e91822a3e07245bc09302b5"
+script:
+  # JaCoCo is used to have code coverage, "-Pcoverage" activates the maven profile in the pom.xml
+  - mvn clean verify sonar:sonar -Pcoverage 
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
